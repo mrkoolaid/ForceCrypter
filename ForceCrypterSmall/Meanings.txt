@@ -1,0 +1,35 @@
+
+Stub:
+//em = encMethod stuff
+//enc = All the encryption/decryption function (ex PolyDexDecrypt key = in PolyDexDecrypt function the variable "key")
+//fun = anything that is in a function (ex AddToStartup string key = a variable in the function stated named "key")
+byte PolyBabyDecrypt = QMtSHObM
+byte PolyDexDecrypt = nCCDlgs5
+byte StairsDecrypt = EyyzbDaLHB
+void AddToStartup = TQEKIP
+void HideFile =  wcpiLYQLsRB
+bool_startup = NfTuXbxvnS
+[startup-replace] = [YpxjOfFPB]
+[key-replace] = [FkSsotrjPQJ]
+[encmethod-replace] = [kBfYFTdYhQmS]
+[delay-replace] = [ozwFhkbJnubLk]
+em string polydex = [GcUkSblPzhF]
+em string polystairs = [SwsurtcRSH]
+em string dex = [SgCy4ca]
+em string aes = [fGaH2f]
+enc StairsDecrypt byte key = gbaFhA
+enc StairsDecrypt string Key = ggGhF
+enc StairsDecrypt byte Data = bvg64fa
+
+fun AddToStartup RegisteryKey key = KcHqX
+fun HideFile FileInfo f = fIg
+
+string encKey = GhtsF
+byte fBytes = yELJS
+string encMethod = Vjggum
+
+fun ReadManaged byte bytes = GDMQJ
+fun ReadManaged ResourceManager manager = JocJH
+
+void ReadManaged = qNkhyYMB
+class Reader = PlolzPNCHr

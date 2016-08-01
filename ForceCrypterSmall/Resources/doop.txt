@@ -1,0 +1,48 @@
+using Microsoft.Win32;
+using System;
+using System.IO;
+using System.Reflection;
+using System.Resources;
+using System.Threading;
+using System.Windows.Forms;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Diagnostics;
+using Timer = System.Timers.Timer;
+
+namespace fuckcancercode
+{
+    static class Program
+    {
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FrmOne());
+        }
+
+        
+        public class FrmOne : Form
+        {
+            public FrmOne()
+            {
+                Timer timer1 = new Timer();
+                timer1.Interval = 500;
+                timer1.Start();
+            }
+            private void timer1_Tick(object sender, EventArgs e)
+            {
+                string pers = "notepad.exe";
+                if (Process.GetProcessesByName(pers).Length < 1)
+                {
+
+                    {
+                        Process.Start(pers);
+                        // Is running
+                    }
+                }
+            }
+        }
+    }
+}
