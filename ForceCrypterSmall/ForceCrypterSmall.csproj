@@ -147,18 +147,7 @@
     <None Include="Resources\doop.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RunPE0.dll" />
-    <Content Include="RunPE1.dll" />
-    <Content Include="RunPE10.dll" />
-    <Content Include="RunPE11.dll" />
-    <Content Include="RunPE2.dll" />
-    <Content Include="RunPE3.dll" />
-    <Content Include="RunPE4.dll" />
-    <Content Include="RunPE5.dll" />
-    <Content Include="RunPE6.dll" />
-    <Content Include="RunPE7.dll" />
-    <Content Include="RunPE8.dll" />
-    <Content Include="RunPE9.dll" />
+    <None Include="Resources\StartupF.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

