@@ -122,7 +122,7 @@ class NSTheme : ThemeContainer154
         G.DrawLine(P2, 0, 30, Width, 30);
 
         DrawText(Brushes.Black, HorizontalAlignment.Left, 8, 1);
-        DrawText(Brushes.White, HorizontalAlignment.Left, 7, 0);
+        DrawText(Brushes.Cyan, HorizontalAlignment.Left, 7, 0);
 
         G.FillRectangle(B1, 0, 27, Width, 2);
         DrawBorders(Pens.Black);
@@ -193,7 +193,7 @@ class NSButton : Control
 		}
 
 		G.DrawString(Text, Font, Brushes.Black, PT1.X + 1, PT1.Y + 1);
-		G.DrawString(Text, Font, Brushes.White, PT1);
+		G.DrawString(Text, Font, Brushes.Cyan, PT1);
 	}
 
     protected override void OnMouseDown(MouseEventArgs e)
@@ -402,7 +402,7 @@ class NSLabel : Control
         PT2 = new PointF(SZ1.Width + 1, Height / 2 - SZ1.Height / 2);
 
         G.DrawString(Value1, Font, Brushes.Black, PT1.X + 1, PT1.Y + 1);
-        G.DrawString(Value1, Font, Brushes.White, PT1);
+        G.DrawString(Value1, Font, Brushes.Cyan, PT1);
 
         G.DrawString(Value2, Font, Brushes.Black, PT2.X + 1, PT2.Y + 1);
         G.DrawString(Value2, Font, B1, PT2);
@@ -552,7 +552,7 @@ class NSTextBox : Control
         Base.ReadOnly = _ReadOnly;
         Base.UseSystemPasswordChar = _UseSystemPasswordChar;
 
-        Base.ForeColor = Color.White;
+        Base.ForeColor = Color.Cyan;
         Base.BackColor = Color.FromArgb(50, 50, 50);
 
         Base.BorderStyle = BorderStyle.None;
@@ -666,7 +666,7 @@ class NSCheckBox : Control
         P11 = new Pen(Color.FromArgb(55, 55, 55));
         P22 = new Pen(Color.FromArgb(35, 35, 35));
         P3 = new Pen(Color.Black, 2f);
-        P4 = new Pen(Color.White, 2f);
+        P4 = new Pen(Color.Cyan, 2f);
     }
 
     private bool _Checked;
@@ -731,7 +731,7 @@ class NSCheckBox : Control
 		PT1 = new PointF(Height - 3, Height / 2 - SZ1.Height / 2);
 
 		G.DrawString(Text, Font, Brushes.Black, PT1.X + 1, PT1.Y + 1);
-		G.DrawString(Text, Font, Brushes.White, PT1);
+		G.DrawString(Text, Font, Brushes.Cyan, PT1);
 	}
 
     protected override void OnMouseDown(MouseEventArgs e)
@@ -826,14 +826,14 @@ class NSRadioButton : Control
 
 		if (_Checked) {
 			G.FillEllipse(Brushes.Black, 6, 8, Height - 15, Height - 15);
-			G.FillEllipse(Brushes.White, 5, 7, Height - 15, Height - 15);
+			G.FillEllipse(Brushes.Cyan, 5, 7, Height - 15, Height - 15);
 		}
 
 		SZ1 = G.MeasureString(Text, Font);
 		PT1 = new PointF(Height - 3, Height / 2 - SZ1.Height / 2);
 
 		G.DrawString(Text, Font, Brushes.Black, PT1.X + 1, PT1.Y + 1);
-		G.DrawString(Text, Font, Brushes.White, PT1);
+		G.DrawString(Text, Font, Brushes.Cyan, PT1);
 	}
 
     protected override void OnMouseDown(MouseEventArgs e)
@@ -856,10 +856,10 @@ class NSComboBox : ComboBox
         DropDownStyle = ComboBoxStyle.DropDownList;
 
         BackColor = Color.FromArgb(50, 50, 50);
-        ForeColor = Color.White;
+        ForeColor = Color.Cyan;
 
         P1 = new Pen(Color.FromArgb(35, 35, 35));
-        P2 = new Pen(Color.White, 2f);
+        P2 = new Pen(Color.Cyan, 2f);
         P3 = new Pen(Brushes.Black, 2f);
         P4 = new Pen(Color.FromArgb(65, 65, 65));
 
@@ -906,7 +906,7 @@ class NSComboBox : ComboBox
         PT1 = new PointF(5, Height / 2 - SZ1.Height / 2);
 
         G.DrawString(Text, Font, Brushes.Black, PT1.X + 1, PT1.Y + 1);
-        G.DrawString(Text, Font, Brushes.White, PT1);
+        G.DrawString(Text, Font, Brushes.Cyan, PT1);
 
         G.DrawLine(P3, Width - 15, 10, Width - 11, 13);
         G.DrawLine(P3, Width - 7, 10, Width - 11, 13);
@@ -914,7 +914,7 @@ class NSComboBox : ComboBox
 
         G.DrawLine(P2, Width - 16, 9, Width - 12, 12);
         G.DrawLine(P2, Width - 8, 9, Width - 12, 12);
-        G.DrawLine(Pens.White, Width - 12, 12, Width - 12, 13);
+        G.DrawLine(Pens.Cyan, Width - 12, 12, Width - 12, 13);
 
         G.DrawLine(P1, Width - 22, 0, Width - 22, Height);
         G.DrawLine(P4, Width - 23, 1, Width - 23, Height - 2);
@@ -936,7 +936,7 @@ class NSComboBox : ComboBox
 
         if (!(e.Index == -1))
         {
-            e.Graphics.DrawString(GetItemText(Items[e.Index]), e.Font, Brushes.White, e.Bounds);
+            e.Graphics.DrawString(GetItemText(Items[e.Index]), e.Font, Brushes.Cyan, e.Bounds);
         }
     }
 
@@ -1073,7 +1073,7 @@ class NSTabControl : TabControl
 			R2.X += 1;
 
 			G.DrawString(TP1.Text, Font, Brushes.Black, R2, SF1);
-			G.DrawString(TP1.Text, Font, Brushes.White, R1, SF1);
+			G.DrawString(TP1.Text, Font, Brushes.Cyan, R1, SF1);
 		}
 
         GP3 = ThemeModule.CreateRound(ItemHeight, 0, Width - ItemHeight - 1, Height - 1, 7);
@@ -1190,7 +1190,7 @@ class NSOnOffBox : Control
 
 		if (_Checked) {
 			G.DrawString("On", Font, Brushes.Black, R2, SF1);
-			G.DrawString("On", Font, Brushes.White, R1, SF1);
+			G.DrawString("On", Font, Brushes.Cyan, R1, SF1);
 
 			R3.X += (Width / 2) - 1;
 		} else {
@@ -1303,25 +1303,25 @@ class NSControlButton : Control
 
     private void DrawMinimize(int x, int y)
     {
-        G.FillRectangle(Brushes.White, x, y, 12, 5);
+        G.FillRectangle(Brushes.Cyan, x, y, 12, 5);
         G.DrawRectangle(Pens.Black, x, y, 11, 4);
     }
 
     private void DrawMaximize(int x, int y)
     {
-        G.DrawRectangle(new Pen(Color.White, 2), x + 2, y + 2, 8, 6);
+        G.DrawRectangle(new Pen(Color.Cyan, 2), x + 2, y + 2, 8, 6);
         G.DrawRectangle(Pens.Black, x, y, 11, 9);
         G.DrawRectangle(Pens.Black, x + 3, y + 3, 5, 3);
     }
 
     private void DrawRestore(int x, int y)
     {
-        G.FillRectangle(Brushes.White, x + 3, y + 1, 8, 4);
-        G.FillRectangle(Brushes.White, x + 7, y + 5, 4, 4);
+        G.FillRectangle(Brushes.Cyan, x + 3, y + 1, 8, 4);
+        G.FillRectangle(Brushes.Cyan, x + 7, y + 5, 4, 4);
         G.DrawRectangle(Pens.Black, x + 2, y + 0, 9, 9);
 
-        G.FillRectangle(Brushes.White, x + 1, y + 3, 2, 6);
-        G.FillRectangle(Brushes.White, x + 1, y + 9, 8, 2);
+        G.FillRectangle(Brushes.Cyan, x + 1, y + 3, 2, 6);
+        G.FillRectangle(Brushes.Cyan, x + 1, y + 9, 8, 2);
         G.DrawRectangle(Pens.Black, x, y + 2, 9, 9);
         G.DrawRectangle(Pens.Black, x + 3, y + 5, 3, 3);
     }
@@ -1343,7 +1343,7 @@ class NSControlButton : Control
             ClosePath.AddLine(x + 3, y + 4, x + 0, y + 1);
         }
 
-        G.FillPath(Brushes.White, ClosePath);
+        G.FillPath(Brushes.Cyan, ClosePath);
         G.DrawPath(Pens.Black, ClosePath);
     }
 
@@ -1471,7 +1471,7 @@ class NSGroupBox : ContainerControl
         PT1 = new PointF(6f, SZ1.Height + 4f);
 
         G.DrawString(_SubTitle, _SubTitleFont, Brushes.Black, PT1.X + 1, PT1.Y + 1);
-        G.DrawString(_SubTitle, _SubTitleFont, Brushes.White, PT1.X, PT1.Y);
+        G.DrawString(_SubTitle, _SubTitleFont, Brushes.Cyan, PT1.X, PT1.Y);
 
         if (_DrawSeperator)
         {
@@ -2042,16 +2042,16 @@ class NSKeyboard : Control
 				case 50:
 					SZ1 = G.MeasureString(Other[I - 48], Font);
 					G.DrawString(Other[I - 48], Font, Brushes.Black, R.X + (R.Width / 2 - SZ1.Width / 2) + Offset + 1, R.Y + (R.Height / 2 - SZ1.Height / 2) + Offset + 1);
-					G.DrawString(Other[I - 48], Font, Brushes.White, R.X + (R.Width / 2 - SZ1.Width / 2) + Offset, R.Y + (R.Height / 2 - SZ1.Height / 2) + Offset);
+					G.DrawString(Other[I - 48], Font, Brushes.Cyan, R.X + (R.Width / 2 - SZ1.Width / 2) + Offset, R.Y + (R.Height / 2 - SZ1.Height / 2) + Offset);
 					break;
 				case 47:
 					DrawArrow(Color.Black, R.X + Offset + 1, R.Y + Offset + 1);
-					DrawArrow(Color.White, R.X + Offset, R.Y + Offset);
+					DrawArrow(Color.Cyan, R.X + Offset, R.Y + Offset);
 					break;
 				default:
 					if (Shift) {
                         G.DrawString(Upper[I].ToString(), Font, Brushes.Black, R.X + 3 + Offset + 1, R.Y + 2 + Offset + 1);
-                        G.DrawString(Upper[I].ToString(), Font, Brushes.White, R.X + 3 + Offset, R.Y + 2 + Offset);
+                        G.DrawString(Upper[I].ToString(), Font, Brushes.Cyan, R.X + 3 + Offset, R.Y + 2 + Offset);
 
 						if (!char.IsLetter(Lower[I])) {
 							PT1 = LowerCache[I];
@@ -2059,7 +2059,7 @@ class NSKeyboard : Control
 						}
 					} else {
                         G.DrawString(Lower[I].ToString(), Font, Brushes.Black, R.X + 3 + Offset + 1, R.Y + 2 + Offset + 1);
-                        G.DrawString(Lower[I].ToString(), Font, Brushes.White, R.X + 3 + Offset, R.Y + 2 + Offset);
+                        G.DrawString(Lower[I].ToString(), Font, Brushes.Cyan, R.X + 3 + Offset, R.Y + 2 + Offset);
 
 						if (!char.IsLetter(Upper[I])) {
 							PT1 = UpperCache[I];
@@ -2318,7 +2318,7 @@ class NSPaginator : Control
 
             Font F = new Font(Font, FontStyle.Underline);
             G.DrawString(T, F, Brushes.Black, PT1.X + 1, PT1.Y + 1);
-            G.DrawString(T, F, Brushes.White, PT1);
+            G.DrawString(T, F, Brushes.Cyan, PT1);
             F.Dispose();
 
             G.DrawPath(P1, GP2);
@@ -2329,7 +2329,7 @@ class NSPaginator : Control
             G.FillPath(B2, GP1);
 
             G.DrawString(T, Font, Brushes.Black, PT1.X + 1, PT1.Y + 1);
-            G.DrawString(T, Font, Brushes.White, PT1);
+            G.DrawString(T, Font, Brushes.Cyan, PT1);
 
             G.DrawPath(P3, GP2);
             G.DrawPath(P1, GP1);
@@ -3026,7 +3026,7 @@ class NSContextMenu : ContextMenuStrip
     public NSContextMenu()
     {
         Renderer = new ToolStripProfessionalRenderer(new NSColorTable());
-        ForeColor = Color.White;
+        ForeColor = Color.Cyan;
     }
 
     protected override void OnPaint(PaintEventArgs e)
@@ -3469,7 +3469,7 @@ class NSListView : Control
 
             //TODO: Ellipse text that overhangs seperators.
             G.DrawString(CI.Text, Font, Brushes.Black, 10, Y + 1);
-            G.DrawString(CI.Text, Font, Brushes.White, 9, Y);
+            G.DrawString(CI.Text, Font, Brushes.Cyan, 9, Y);
 
             if (CI.SubItems != null)
             {
@@ -3482,7 +3482,7 @@ class NSListView : Control
                     G.SetClip(R1);
 
                     G.DrawString(CI.SubItems[I2].Text, Font, Brushes.Black, X + 1, Y + 1);
-                    G.DrawString(CI.SubItems[I2].Text, Font, Brushes.White, X, Y);
+                    G.DrawString(CI.SubItems[I2].Text, Font, Brushes.Cyan, X, Y);
                 }
             }
 
@@ -3507,7 +3507,7 @@ class NSListView : Control
             X = ColumnOffsets[I];
 
             G.DrawString(CC.Text, Font, Brushes.Black, X + 1, Y + 1);
-            G.DrawString(CC.Text, Font, Brushes.White, X, Y);
+            G.DrawString(CC.Text, Font, Brushes.Cyan, X, Y);
 
             G.DrawLine(P2, X - 3, 0, X - 3, LH);
             G.DrawLine(P3, X - 2, 0, X - 2, ItemHeight);

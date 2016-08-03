@@ -270,7 +270,7 @@
             // 
             // btnPayload
             // 
-            this.btnPayload.Location = new System.Drawing.Point(346, 31);
+            this.btnPayload.Location = new System.Drawing.Point(347, 36);
             this.btnPayload.Name = "btnPayload";
             this.btnPayload.Size = new System.Drawing.Size(34, 23);
             this.btnPayload.TabIndex = 10;
@@ -294,7 +294,7 @@
             // txtPayload
             // 
             this.txtPayload.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtPayload.Location = new System.Drawing.Point(10, 31);
+            this.txtPayload.Location = new System.Drawing.Point(10, 36);
             this.txtPayload.MaxLength = 32767;
             this.txtPayload.Multiline = false;
             this.txtPayload.Name = "txtPayload";
