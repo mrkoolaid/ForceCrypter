@@ -85,6 +85,7 @@
             this.CryptTab = new System.Windows.Forms.TabPage();
             this.btnCrypt = new NSButton();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.nsControlButton2 = new NSControlButton();
             this.nsTheme1.SuspendLayout();
             this.AssemblyTab.SuspendLayout();
             this.MainTab.SuspendLayout();
@@ -105,6 +106,7 @@
             this.nsTheme1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.nsTheme1.BorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.nsTheme1.Colors = new Bloom[0];
+            this.nsTheme1.Controls.Add(this.nsControlButton2);
             this.nsTheme1.Controls.Add(this.nsControlButton1);
             this.nsTheme1.Controls.Add(this.AssemblyTab);
             this.nsTheme1.Customization = "";
@@ -173,9 +175,9 @@
             this.nsGroupBox7.Controls.Add(this.rbRegAsm);
             this.nsGroupBox7.Controls.Add(this.rbItself);
             this.nsGroupBox7.DrawSeperator = false;
-            this.nsGroupBox7.Location = new System.Drawing.Point(7, 371);
+            this.nsGroupBox7.Location = new System.Drawing.Point(7, 370);
             this.nsGroupBox7.Name = "nsGroupBox7";
-            this.nsGroupBox7.Size = new System.Drawing.Size(216, 138);
+            this.nsGroupBox7.Size = new System.Drawing.Size(216, 144);
             this.nsGroupBox7.SubTitle = "Diffrent injection methods";
             this.nsGroupBox7.TabIndex = 10;
             this.nsGroupBox7.Text = "nsGroupBox7";
@@ -802,6 +804,19 @@
             this.richTextBox2.TabIndex = 6;
             this.richTextBox2.Text = resources.GetString("richTextBox2.Text");
             // 
+            // nsControlButton2
+            // 
+            this.nsControlButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.nsControlButton2.ControlButton = NSControlButton.Button.Minimize;
+            this.nsControlButton2.Location = new System.Drawing.Point(482, 0);
+            this.nsControlButton2.Margin = new System.Windows.Forms.Padding(0);
+            this.nsControlButton2.MaximumSize = new System.Drawing.Size(18, 20);
+            this.nsControlButton2.MinimumSize = new System.Drawing.Size(18, 20);
+            this.nsControlButton2.Name = "nsControlButton2";
+            this.nsControlButton2.Size = new System.Drawing.Size(18, 20);
+            this.nsControlButton2.TabIndex = 11;
+            this.nsControlButton2.Text = "nsControlButton2";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -885,6 +900,7 @@
         private NSLabel nsLabel12;
         private NSLabel nsLabel13;
         private NSTextBox txtFName;
+        private NSControlButton nsControlButton2;
     }
 }
 

