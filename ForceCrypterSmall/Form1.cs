@@ -103,7 +103,7 @@ namespace ForceCrypterSmall
         private void nsRandomPool1_ValueChanged(object sender)
         {
             //Making a random key
-            txtEncryptionKey.Text = nsRandomPool1.Value + RandomString(15);
+            txtEncryptionKey.Text = nsRandomPool1.Value + RandomString(140);
         }
 
         private void btnRandomize_Click_1(object sender, EventArgs e)
