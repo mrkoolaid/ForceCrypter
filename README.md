@@ -1,7 +1,7 @@
 # ForceCrypter
 A crypter made by mrmutt in hackforums
 HackForums profile link: http://hackforums.net/member.php?action=profile&uid=3005497
-Thread link:
+Thread link:http://hackforums.net/showthread.php?tid=5361893
 
 Thanks to:
 AeonHack for RunPE and Theme: http://hackforums.net/member.php?action=...uid=101640
