@@ -16,6 +16,7 @@ using Microsoft.Win32;
 using ForceCrypterSmall.Resources;
 using System.Globalization;
 using System.Security.Cryptography;
+using ClassLibrary4;
 //Copyright 2016
 //Made by mrmutt for hackforums uid=3005497
 //Please leave this note here

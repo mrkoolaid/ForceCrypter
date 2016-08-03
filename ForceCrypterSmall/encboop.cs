@@ -8,7 +8,6 @@ using System.IO;
 namespace ForceCrypterSmall
 {
 
-
     public class Encboop
     {
        

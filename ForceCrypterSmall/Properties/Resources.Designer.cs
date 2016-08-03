@@ -113,14 +113,5 @@ namespace ForceCrypterSmall.Properties {
                 return ResourceManager.GetString("doop", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string StartupF {
-            get {
-                return ResourceManager.GetString("StartupF", resourceCulture);
-            }
-        }
     }
 }

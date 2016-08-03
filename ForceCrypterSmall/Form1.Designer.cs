@@ -201,7 +201,7 @@
             // 
             // rbItself
             // 
-            this.rbItself.Checked = false;
+            this.rbItself.Checked = true;
             this.rbItself.Location = new System.Drawing.Point(7, 40);
             this.rbItself.Name = "rbItself";
             this.rbItself.Size = new System.Drawing.Size(75, 23);
@@ -236,7 +236,7 @@
             // 
             // nsRandomPool1
             // 
-            this.nsRandomPool1.BackColor = System.Drawing.Color.Maroon;
+            this.nsRandomPool1.BackColor = System.Drawing.Color.Black;
             this.nsRandomPool1.ForeColor = System.Drawing.Color.Transparent;
             this.nsRandomPool1.Location = new System.Drawing.Point(8, 43);
             this.nsRandomPool1.Name = "nsRandomPool1";

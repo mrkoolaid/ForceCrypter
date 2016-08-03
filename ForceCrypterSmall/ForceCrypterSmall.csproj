@@ -33,57 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ClassLibrary3">
-      <HintPath>..\..\ClassLibrary3\ClassLibrary3\bin\Debug\ClassLibrary3.dll</HintPath>
-    </Reference>
-    <Reference Include="RunPE0, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\AwsomeHacks\Sources\LS Crypter\LS Crypter\Resources\RunPE0.dll</HintPath>
-    </Reference>
-    <Reference Include="RunPE1, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\AwsomeHacks\Sources\LS Crypter\LS Crypter\Resources\RunPE1.dll</HintPath>
-    </Reference>
-    <Reference Include="RunPE10, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\AwsomeHacks\Sources\LS Crypter\LS Crypter\Resources\RunPE10.dll</HintPath>
-    </Reference>
-    <Reference Include="RunPE11, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\AwsomeHacks\Sources\LS Crypter\LS Crypter\Resources\RunPE11.dll</HintPath>
-    </Reference>
-    <Reference Include="RunPE2, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\AwsomeHacks\Sources\LS Crypter\LS Crypter\Resources\RunPE2.dll</HintPath>
-    </Reference>
-    <Reference Include="RunPE3, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\AwsomeHacks\Sources\LS Crypter\LS Crypter\Resources\RunPE3.dll</HintPath>
-    </Reference>
-    <Reference Include="RunPE4, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\AwsomeHacks\Sources\LS Crypter\LS Crypter\Resources\RunPE4.dll</HintPath>
-    </Reference>
-    <Reference Include="RunPE5, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\AwsomeHacks\Sources\LS Crypter\LS Crypter\Resources\RunPE5.dll</HintPath>
-    </Reference>
-    <Reference Include="RunPE6, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\AwsomeHacks\Sources\LS Crypter\LS Crypter\Resources\RunPE6.dll</HintPath>
-    </Reference>
-    <Reference Include="RunPE7, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\AwsomeHacks\Sources\LS Crypter\LS Crypter\Resources\RunPE7.dll</HintPath>
-    </Reference>
-    <Reference Include="RunPE8, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\AwsomeHacks\Sources\LS Crypter\LS Crypter\Resources\RunPE8.dll</HintPath>
-    </Reference>
-    <Reference Include="RunPE9, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>E:\AwsomeHacks\Sources\LS Crypter\LS Crypter\Resources\RunPE9.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.DirectoryServices" />
@@ -145,9 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\doop.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\StartupF.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
