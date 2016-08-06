@@ -84,34 +84,5 @@ namespace ForceCrypterSmall.Properties {
                 return ResourceManager.GetString("boop", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to using Microsoft.Win32;
-        ///using System;
-        ///using System.IO;
-        ///using System.Reflection;
-        ///using System.Resources;
-        ///using System.Threading;
-        ///using System.Windows.Forms;
-        ///using System.Runtime.InteropServices;
-        ///using System.Security.Cryptography;
-        ///using System.Diagnostics;
-        ///using Timer = System.Timers.Timer;
-        ///
-        ///namespace fuckcancercode
-        ///{
-        ///    static class Program
-        ///    {
-        ///        [STAThread]
-        ///        static void Main()
-        ///        {
-        ///            Application.EnableVisualStyles();
-        ///            Application.SetCompatibleTex [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string doop {
-            get {
-                return ResourceManager.GetString("doop", resourceCulture);
-            }
-        }
     }
 }

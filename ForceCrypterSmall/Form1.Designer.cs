@@ -38,9 +38,6 @@
             this.rbVbc = new NSRadioButton();
             this.rbRegAsm = new NSRadioButton();
             this.rbItself = new NSRadioButton();
-            this.nsGroupBox2 = new NSGroupBox();
-            this.txtEncryptionKey = new NSTextBox();
-            this.nsRandomPool1 = new NSRandomPool();
             this.nsGroupBox1 = new NSGroupBox();
             this.btnIcon = new NSButton();
             this.btnPayload = new NSButton();
@@ -54,10 +51,11 @@
             this.nsLabel18 = new NSLabel();
             this.cbMsgBox = new NSOnOffBox();
             this.nsGroupBox5 = new NSGroupBox();
-            this.cbDelay = new NSOnOffBox();
+            this.nsLabel20 = new NSLabel();
             this.nsLabel11 = new NSLabel();
             this.txtDelay = new NSTextBox();
             this.nsGroupBox3 = new NSGroupBox();
+            this.rbRandomBytes = new NSCheckBox();
             this.cbPump = new NSOnOffBox();
             this.nsLabel1 = new NSLabel();
             this.txtPump = new NSTextBox();
@@ -89,28 +87,24 @@
             this.nsLabel4 = new NSLabel();
             this.nsLabel3 = new NSLabel();
             this.Scanner = new System.Windows.Forms.TabPage();
-            this.nsButton2 = new NSButton();
-            this.danklebel = new NSLabel();
-            this.txtScanBBCode = new NSTextBox();
-            this.txtScanImage = new NSTextBox();
-            this.nsLabel17 = new NSLabel();
+            this.btnScanFile = new NSButton();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnScan = new NSButton();
             this.nsLabel16 = new NSLabel();
             this.txtScanLink = new NSTextBox();
-            this.txtScanDetailes = new System.Windows.Forms.RichTextBox();
             this.nsLabel15 = new NSLabel();
             this.nsLabel14 = new NSLabel();
-            this.nsTextBox2 = new NSTextBox();
-            this.nsButton1 = new NSButton();
+            this.txtScanRate = new NSTextBox();
             this.txtScanFile = new NSTextBox();
             this.CryptTab = new System.Windows.Forms.TabPage();
             this.btnCrypt = new NSButton();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.rbRandomBytes = new NSCheckBox();
             this.nsTheme1.SuspendLayout();
             this.AssemblyTab.SuspendLayout();
             this.MainTab.SuspendLayout();
             this.nsGroupBox7.SuspendLayout();
-            this.nsGroupBox2.SuspendLayout();
             this.nsGroupBox1.SuspendLayout();
             this.OptionsTab.SuspendLayout();
             this.nsGroupBox6.SuspendLayout();
@@ -188,7 +182,7 @@
             this.AssemblyTab.Multiline = true;
             this.AssemblyTab.Name = "AssemblyTab";
             this.AssemblyTab.SelectedIndex = 0;
-            this.AssemblyTab.Size = new System.Drawing.Size(519, 554);
+            this.AssemblyTab.Size = new System.Drawing.Size(522, 551);
             this.AssemblyTab.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.AssemblyTab.TabIndex = 0;
             // 
@@ -196,12 +190,11 @@
             // 
             this.MainTab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.MainTab.Controls.Add(this.nsGroupBox7);
-            this.MainTab.Controls.Add(this.nsGroupBox2);
             this.MainTab.Controls.Add(this.nsGroupBox1);
             this.MainTab.Location = new System.Drawing.Point(119, 4);
             this.MainTab.Name = "MainTab";
             this.MainTab.Padding = new System.Windows.Forms.Padding(3);
-            this.MainTab.Size = new System.Drawing.Size(396, 546);
+            this.MainTab.Size = new System.Drawing.Size(399, 543);
             this.MainTab.TabIndex = 0;
             this.MainTab.Text = "Main";
             // 
@@ -211,7 +204,7 @@
             this.nsGroupBox7.Controls.Add(this.rbRegAsm);
             this.nsGroupBox7.Controls.Add(this.rbItself);
             this.nsGroupBox7.DrawSeperator = false;
-            this.nsGroupBox7.Location = new System.Drawing.Point(7, 370);
+            this.nsGroupBox7.Location = new System.Drawing.Point(6, 107);
             this.nsGroupBox7.Name = "nsGroupBox7";
             this.nsGroupBox7.Size = new System.Drawing.Size(216, 144);
             this.nsGroupBox7.SubTitle = "Diffrent injection methods";
@@ -245,43 +238,6 @@
             this.rbItself.Size = new System.Drawing.Size(75, 23);
             this.rbItself.TabIndex = 0;
             this.rbItself.Text = "Itself";
-            // 
-            // nsGroupBox2
-            // 
-            this.nsGroupBox2.Controls.Add(this.txtEncryptionKey);
-            this.nsGroupBox2.Controls.Add(this.nsRandomPool1);
-            this.nsGroupBox2.DrawSeperator = false;
-            this.nsGroupBox2.Location = new System.Drawing.Point(6, 107);
-            this.nsGroupBox2.Name = "nsGroupBox2";
-            this.nsGroupBox2.Size = new System.Drawing.Size(386, 257);
-            this.nsGroupBox2.SubTitle = "Encryption Key";
-            this.nsGroupBox2.TabIndex = 9;
-            this.nsGroupBox2.Title = "Encryption";
-            // 
-            // txtEncryptionKey
-            // 
-            this.txtEncryptionKey.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEncryptionKey.Location = new System.Drawing.Point(8, 218);
-            this.txtEncryptionKey.MaxLength = 3276700;
-            this.txtEncryptionKey.Multiline = false;
-            this.txtEncryptionKey.Name = "txtEncryptionKey";
-            this.txtEncryptionKey.ReadOnly = false;
-            this.txtEncryptionKey.Size = new System.Drawing.Size(372, 23);
-            this.txtEncryptionKey.TabIndex = 3;
-            this.txtEncryptionKey.Text = "Encryption Key";
-            this.txtEncryptionKey.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtEncryptionKey.UseSystemPasswordChar = false;
-            // 
-            // nsRandomPool1
-            // 
-            this.nsRandomPool1.BackColor = System.Drawing.Color.Black;
-            this.nsRandomPool1.ForeColor = System.Drawing.Color.Transparent;
-            this.nsRandomPool1.Location = new System.Drawing.Point(8, 43);
-            this.nsRandomPool1.Name = "nsRandomPool1";
-            this.nsRandomPool1.Size = new System.Drawing.Size(372, 169);
-            this.nsRandomPool1.TabIndex = 0;
-            this.nsRandomPool1.Text = " ";
-            this.nsRandomPool1.ValueChanged += new NSRandomPool.ValueChangedEventHandler(this.nsRandomPool1_ValueChanged);
             // 
             // nsGroupBox1
             // 
@@ -353,7 +309,7 @@
             this.OptionsTab.Location = new System.Drawing.Point(119, 4);
             this.OptionsTab.Name = "OptionsTab";
             this.OptionsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.OptionsTab.Size = new System.Drawing.Size(396, 546);
+            this.OptionsTab.Size = new System.Drawing.Size(399, 543);
             this.OptionsTab.TabIndex = 4;
             this.OptionsTab.Text = "Options";
             // 
@@ -365,9 +321,9 @@
             this.nsGroupBox6.Controls.Add(this.nsLabel18);
             this.nsGroupBox6.Controls.Add(this.cbMsgBox);
             this.nsGroupBox6.DrawSeperator = false;
-            this.nsGroupBox6.Location = new System.Drawing.Point(10, 343);
+            this.nsGroupBox6.Location = new System.Drawing.Point(7, 327);
             this.nsGroupBox6.Name = "nsGroupBox6";
-            this.nsGroupBox6.Size = new System.Drawing.Size(382, 134);
+            this.nsGroupBox6.Size = new System.Drawing.Size(382, 127);
             this.nsGroupBox6.SubTitle = "Show a fake error";
             this.nsGroupBox6.TabIndex = 13;
             this.nsGroupBox6.Text = "nsGroupBox6";
@@ -434,33 +390,33 @@
             // 
             // nsGroupBox5
             // 
-            this.nsGroupBox5.Controls.Add(this.cbDelay);
+            this.nsGroupBox5.Controls.Add(this.nsLabel20);
             this.nsGroupBox5.Controls.Add(this.nsLabel11);
             this.nsGroupBox5.Controls.Add(this.txtDelay);
             this.nsGroupBox5.DrawSeperator = false;
-            this.nsGroupBox5.Location = new System.Drawing.Point(224, 206);
+            this.nsGroupBox5.Location = new System.Drawing.Point(223, 191);
             this.nsGroupBox5.Name = "nsGroupBox5";
             this.nsGroupBox5.Size = new System.Drawing.Size(169, 130);
-            this.nsGroupBox5.SubTitle = "Add some delay";
+            this.nsGroupBox5.SubTitle = "Options";
             this.nsGroupBox5.TabIndex = 12;
             this.nsGroupBox5.Text = "nsGroupBox5";
-            this.nsGroupBox5.Title = "Delay";
+            this.nsGroupBox5.Title = "Process Options";
             // 
-            // cbDelay
+            // nsLabel20
             // 
-            this.cbDelay.Checked = false;
-            this.cbDelay.Location = new System.Drawing.Point(3, 40);
-            this.cbDelay.MaximumSize = new System.Drawing.Size(56, 24);
-            this.cbDelay.MinimumSize = new System.Drawing.Size(56, 24);
-            this.cbDelay.Name = "cbDelay";
-            this.cbDelay.Size = new System.Drawing.Size(56, 24);
-            this.cbDelay.TabIndex = 2;
-            this.cbDelay.Text = "nsOnOffBox2";
+            this.nsLabel20.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
+            this.nsLabel20.Location = new System.Drawing.Point(3, 39);
+            this.nsLabel20.Name = "nsLabel20";
+            this.nsLabel20.Size = new System.Drawing.Size(51, 23);
+            this.nsLabel20.TabIndex = 2;
+            this.nsLabel20.Text = "nsLabel20";
+            this.nsLabel20.Value1 = "Delay";
+            this.nsLabel20.Value2 = "";
             // 
             // nsLabel11
             // 
             this.nsLabel11.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.nsLabel11.Location = new System.Drawing.Point(101, 70);
+            this.nsLabel11.Location = new System.Drawing.Point(101, 61);
             this.nsLabel11.Name = "nsLabel11";
             this.nsLabel11.Size = new System.Drawing.Size(64, 20);
             this.nsLabel11.TabIndex = 1;
@@ -471,14 +427,13 @@
             // txtDelay
             // 
             this.txtDelay.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtDelay.Location = new System.Drawing.Point(3, 70);
+            this.txtDelay.Location = new System.Drawing.Point(3, 61);
             this.txtDelay.MaxLength = 32767;
             this.txtDelay.Multiline = false;
             this.txtDelay.Name = "txtDelay";
             this.txtDelay.ReadOnly = false;
             this.txtDelay.Size = new System.Drawing.Size(92, 23);
             this.txtDelay.TabIndex = 0;
-            this.txtDelay.Text = "Delay time";
             this.txtDelay.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtDelay.UseSystemPasswordChar = false;
             // 
@@ -489,13 +444,22 @@
             this.nsGroupBox3.Controls.Add(this.nsLabel1);
             this.nsGroupBox3.Controls.Add(this.txtPump);
             this.nsGroupBox3.DrawSeperator = false;
-            this.nsGroupBox3.Location = new System.Drawing.Point(6, 205);
+            this.nsGroupBox3.Location = new System.Drawing.Point(7, 190);
             this.nsGroupBox3.Name = "nsGroupBox3";
             this.nsGroupBox3.Size = new System.Drawing.Size(211, 131);
             this.nsGroupBox3.SubTitle = "Add size to your file";
             this.nsGroupBox3.TabIndex = 11;
             this.nsGroupBox3.Text = "nsGroupBox3";
             this.nsGroupBox3.Title = "Pumper";
+            // 
+            // rbRandomBytes
+            // 
+            this.rbRandomBytes.Checked = false;
+            this.rbRandomBytes.Location = new System.Drawing.Point(39, 100);
+            this.rbRandomBytes.Name = "rbRandomBytes";
+            this.rbRandomBytes.Size = new System.Drawing.Size(121, 23);
+            this.rbRandomBytes.TabIndex = 8;
+            this.rbRandomBytes.Text = "RandomBytes";
             // 
             // cbPump
             // 
@@ -544,7 +508,7 @@
             this.nsGroupBox4.DrawSeperator = false;
             this.nsGroupBox4.Location = new System.Drawing.Point(6, 6);
             this.nsGroupBox4.Name = "nsGroupBox4";
-            this.nsGroupBox4.Size = new System.Drawing.Size(387, 193);
+            this.nsGroupBox4.Size = new System.Drawing.Size(387, 178);
             this.nsGroupBox4.SubTitle = "Add the file to startup";
             this.nsGroupBox4.TabIndex = 7;
             this.nsGroupBox4.Title = "Startup";
@@ -656,13 +620,13 @@
             this.Assembly.Location = new System.Drawing.Point(119, 4);
             this.Assembly.Name = "Assembly";
             this.Assembly.Padding = new System.Windows.Forms.Padding(3);
-            this.Assembly.Size = new System.Drawing.Size(396, 546);
+            this.Assembly.Size = new System.Drawing.Size(399, 543);
             this.Assembly.TabIndex = 2;
             this.Assembly.Text = "Assembly";
             // 
             // btnClone
             // 
-            this.btnClone.Location = new System.Drawing.Point(228, 374);
+            this.btnClone.Location = new System.Drawing.Point(213, 366);
             this.btnClone.Name = "btnClone";
             this.btnClone.Size = new System.Drawing.Size(75, 23);
             this.btnClone.TabIndex = 56;
@@ -671,7 +635,7 @@
             // 
             // btnRandomize
             // 
-            this.btnRandomize.Location = new System.Drawing.Point(109, 375);
+            this.btnRandomize.Location = new System.Drawing.Point(94, 367);
             this.btnRandomize.Name = "btnRandomize";
             this.btnRandomize.Size = new System.Drawing.Size(75, 23);
             this.btnRandomize.TabIndex = 55;
@@ -686,7 +650,7 @@
             this.txtTrademark.Multiline = false;
             this.txtTrademark.Name = "txtTrademark";
             this.txtTrademark.ReadOnly = false;
-            this.txtTrademark.Size = new System.Drawing.Size(281, 23);
+            this.txtTrademark.Size = new System.Drawing.Size(262, 23);
             this.txtTrademark.TabIndex = 54;
             this.txtTrademark.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtTrademark.UseSystemPasswordChar = false;
@@ -699,7 +663,7 @@
             this.txtCopyright.Multiline = false;
             this.txtCopyright.Name = "txtCopyright";
             this.txtCopyright.ReadOnly = false;
-            this.txtCopyright.Size = new System.Drawing.Size(280, 23);
+            this.txtCopyright.Size = new System.Drawing.Size(261, 23);
             this.txtCopyright.TabIndex = 53;
             this.txtCopyright.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCopyright.UseSystemPasswordChar = false;
@@ -712,7 +676,7 @@
             this.txtFVersion.Multiline = false;
             this.txtFVersion.Name = "txtFVersion";
             this.txtFVersion.ReadOnly = false;
-            this.txtFVersion.Size = new System.Drawing.Size(281, 23);
+            this.txtFVersion.Size = new System.Drawing.Size(262, 23);
             this.txtFVersion.TabIndex = 52;
             this.txtFVersion.Text = "0.0.0.0";
             this.txtFVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -726,7 +690,7 @@
             this.txtVersion.Multiline = false;
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.ReadOnly = false;
-            this.txtVersion.Size = new System.Drawing.Size(281, 23);
+            this.txtVersion.Size = new System.Drawing.Size(262, 23);
             this.txtVersion.TabIndex = 51;
             this.txtVersion.Text = "0.0.0.0";
             this.txtVersion.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -740,7 +704,7 @@
             this.txtProduct.Multiline = false;
             this.txtProduct.Name = "txtProduct";
             this.txtProduct.ReadOnly = false;
-            this.txtProduct.Size = new System.Drawing.Size(280, 23);
+            this.txtProduct.Size = new System.Drawing.Size(261, 23);
             this.txtProduct.TabIndex = 50;
             this.txtProduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtProduct.UseSystemPasswordChar = false;
@@ -753,7 +717,7 @@
             this.txtCompany.Multiline = false;
             this.txtCompany.Name = "txtCompany";
             this.txtCompany.ReadOnly = false;
-            this.txtCompany.Size = new System.Drawing.Size(280, 23);
+            this.txtCompany.Size = new System.Drawing.Size(261, 23);
             this.txtCompany.TabIndex = 49;
             this.txtCompany.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCompany.UseSystemPasswordChar = false;
@@ -766,7 +730,7 @@
             this.txtDescription.Multiline = false;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ReadOnly = false;
-            this.txtDescription.Size = new System.Drawing.Size(280, 23);
+            this.txtDescription.Size = new System.Drawing.Size(261, 23);
             this.txtDescription.TabIndex = 48;
             this.txtDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtDescription.UseSystemPasswordChar = false;
@@ -779,7 +743,7 @@
             this.txtTitle.Multiline = false;
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.ReadOnly = false;
-            this.txtTitle.Size = new System.Drawing.Size(281, 23);
+            this.txtTitle.Size = new System.Drawing.Size(262, 23);
             this.txtTitle.TabIndex = 47;
             this.txtTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtTitle.UseSystemPasswordChar = false;
@@ -875,86 +839,65 @@
             // Scanner
             // 
             this.Scanner.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.Scanner.Controls.Add(this.nsButton2);
-            this.Scanner.Controls.Add(this.danklebel);
-            this.Scanner.Controls.Add(this.txtScanBBCode);
-            this.Scanner.Controls.Add(this.txtScanImage);
-            this.Scanner.Controls.Add(this.nsLabel17);
+            this.Scanner.Controls.Add(this.btnScanFile);
+            this.Scanner.Controls.Add(this.listView1);
+            this.Scanner.Controls.Add(this.btnScan);
             this.Scanner.Controls.Add(this.nsLabel16);
             this.Scanner.Controls.Add(this.txtScanLink);
-            this.Scanner.Controls.Add(this.txtScanDetailes);
             this.Scanner.Controls.Add(this.nsLabel15);
             this.Scanner.Controls.Add(this.nsLabel14);
-            this.Scanner.Controls.Add(this.nsTextBox2);
-            this.Scanner.Controls.Add(this.nsButton1);
+            this.Scanner.Controls.Add(this.txtScanRate);
             this.Scanner.Controls.Add(this.txtScanFile);
             this.Scanner.Location = new System.Drawing.Point(119, 4);
             this.Scanner.Name = "Scanner";
-            this.Scanner.Size = new System.Drawing.Size(396, 546);
+            this.Scanner.Size = new System.Drawing.Size(399, 543);
             this.Scanner.TabIndex = 5;
             this.Scanner.Text = "Scanner";
             // 
-            // nsButton2
+            // btnScanFile
             // 
-            this.nsButton2.Location = new System.Drawing.Point(112, 486);
-            this.nsButton2.Name = "nsButton2";
-            this.nsButton2.Size = new System.Drawing.Size(156, 35);
-            this.nsButton2.TabIndex = 12;
-            this.nsButton2.Text = "Scan!";
-            this.nsButton2.Click += new System.EventHandler(this.nsButton2_Click);
+            this.btnScanFile.Location = new System.Drawing.Point(363, 12);
+            this.btnScanFile.Name = "btnScanFile";
+            this.btnScanFile.Size = new System.Drawing.Size(33, 23);
+            this.btnScanFile.TabIndex = 14;
+            this.btnScanFile.Text = "...";
+            this.btnScanFile.Click += new System.EventHandler(this.btnScanFile_Click);
             // 
-            // danklebel
+            // listView1
             // 
-            this.danklebel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.danklebel.Location = new System.Drawing.Point(14, 447);
-            this.danklebel.Name = "danklebel";
-            this.danklebel.Size = new System.Drawing.Size(75, 23);
-            this.danklebel.TabIndex = 11;
-            this.danklebel.Text = "nsLabel18";
-            this.danklebel.Value1 = "BBCode";
-            this.danklebel.Value2 = ":";
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listView1.Location = new System.Drawing.Point(14, 92);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(367, 278);
+            this.listView1.TabIndex = 13;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
-            // txtScanBBCode
+            // columnHeader1
             // 
-            this.txtScanBBCode.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtScanBBCode.Location = new System.Drawing.Point(95, 448);
-            this.txtScanBBCode.MaxLength = 32767;
-            this.txtScanBBCode.Multiline = false;
-            this.txtScanBBCode.Name = "txtScanBBCode";
-            this.txtScanBBCode.ReadOnly = false;
-            this.txtScanBBCode.Size = new System.Drawing.Size(296, 23);
-            this.txtScanBBCode.TabIndex = 10;
-            this.txtScanBBCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtScanBBCode.UseSystemPasswordChar = false;
+            this.columnHeader1.Text = "AV";
+            this.columnHeader1.Width = 157;
             // 
-            // txtScanImage
+            // columnHeader2
             // 
-            this.txtScanImage.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtScanImage.Location = new System.Drawing.Point(95, 418);
-            this.txtScanImage.MaxLength = 32767;
-            this.txtScanImage.Multiline = false;
-            this.txtScanImage.Name = "txtScanImage";
-            this.txtScanImage.ReadOnly = false;
-            this.txtScanImage.Size = new System.Drawing.Size(296, 23);
-            this.txtScanImage.TabIndex = 9;
-            this.txtScanImage.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txtScanImage.UseSystemPasswordChar = false;
+            this.columnHeader2.Text = "Result";
+            this.columnHeader2.Width = 215;
             // 
-            // nsLabel17
+            // btnScan
             // 
-            this.nsLabel17.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.nsLabel17.Location = new System.Drawing.Point(14, 417);
-            this.nsLabel17.Name = "nsLabel17";
-            this.nsLabel17.Size = new System.Drawing.Size(56, 23);
-            this.nsLabel17.TabIndex = 8;
-            this.nsLabel17.Text = "nsLabel17";
-            this.nsLabel17.Value1 = "Image";
-            this.nsLabel17.Value2 = ":";
+            this.btnScan.Location = new System.Drawing.Point(95, 405);
+            this.btnScan.Name = "btnScan";
+            this.btnScan.Size = new System.Drawing.Size(156, 25);
+            this.btnScan.TabIndex = 12;
+            this.btnScan.Text = "Scan!";
+            this.btnScan.Click += new System.EventHandler(this.btnScan_Click);
             // 
             // nsLabel16
             // 
             this.nsLabel16.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold);
-            this.nsLabel16.Location = new System.Drawing.Point(14, 387);
+            this.nsLabel16.Location = new System.Drawing.Point(14, 376);
             this.nsLabel16.Name = "nsLabel16";
             this.nsLabel16.Size = new System.Drawing.Size(46, 23);
             this.nsLabel16.TabIndex = 7;
@@ -965,23 +908,15 @@
             // txtScanLink
             // 
             this.txtScanLink.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtScanLink.Location = new System.Drawing.Point(95, 388);
+            this.txtScanLink.Location = new System.Drawing.Point(95, 376);
             this.txtScanLink.MaxLength = 32767;
             this.txtScanLink.Multiline = false;
             this.txtScanLink.Name = "txtScanLink";
             this.txtScanLink.ReadOnly = false;
-            this.txtScanLink.Size = new System.Drawing.Size(296, 23);
+            this.txtScanLink.Size = new System.Drawing.Size(262, 23);
             this.txtScanLink.TabIndex = 6;
             this.txtScanLink.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtScanLink.UseSystemPasswordChar = false;
-            // 
-            // txtScanDetailes
-            // 
-            this.txtScanDetailes.Location = new System.Drawing.Point(14, 101);
-            this.txtScanDetailes.Name = "txtScanDetailes";
-            this.txtScanDetailes.Size = new System.Drawing.Size(377, 280);
-            this.txtScanDetailes.TabIndex = 5;
-            this.txtScanDetailes.Text = "";
             // 
             // nsLabel15
             // 
@@ -1005,27 +940,18 @@
             this.nsLabel14.Value1 = "Rate";
             this.nsLabel14.Value2 = ":";
             // 
-            // nsTextBox2
+            // txtScanRate
             // 
-            this.nsTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.nsTextBox2.Location = new System.Drawing.Point(66, 42);
-            this.nsTextBox2.MaxLength = 32767;
-            this.nsTextBox2.Multiline = false;
-            this.nsTextBox2.Name = "nsTextBox2";
-            this.nsTextBox2.ReadOnly = false;
-            this.nsTextBox2.Size = new System.Drawing.Size(57, 24);
-            this.nsTextBox2.TabIndex = 2;
-            this.nsTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.nsTextBox2.UseSystemPasswordChar = false;
-            // 
-            // nsButton1
-            // 
-            this.nsButton1.Location = new System.Drawing.Point(363, 13);
-            this.nsButton1.Name = "nsButton1";
-            this.nsButton1.Size = new System.Drawing.Size(28, 23);
-            this.nsButton1.TabIndex = 1;
-            this.nsButton1.Text = "...";
-            this.nsButton1.Click += new System.EventHandler(this.nsButton1_Click);
+            this.txtScanRate.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtScanRate.Location = new System.Drawing.Point(66, 42);
+            this.txtScanRate.MaxLength = 32767;
+            this.txtScanRate.Multiline = false;
+            this.txtScanRate.Name = "txtScanRate";
+            this.txtScanRate.ReadOnly = false;
+            this.txtScanRate.Size = new System.Drawing.Size(57, 24);
+            this.txtScanRate.TabIndex = 2;
+            this.txtScanRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtScanRate.UseSystemPasswordChar = false;
             // 
             // txtScanFile
             // 
@@ -1049,7 +975,7 @@
             this.CryptTab.Location = new System.Drawing.Point(119, 4);
             this.CryptTab.Name = "CryptTab";
             this.CryptTab.Padding = new System.Windows.Forms.Padding(3);
-            this.CryptTab.Size = new System.Drawing.Size(396, 546);
+            this.CryptTab.Size = new System.Drawing.Size(399, 543);
             this.CryptTab.TabIndex = 3;
             this.CryptTab.Text = "Crypt";
             // 
@@ -1070,15 +996,6 @@
             this.richTextBox2.TabIndex = 6;
             this.richTextBox2.Text = resources.GetString("richTextBox2.Text");
             // 
-            // rbRandomBytes
-            // 
-            this.rbRandomBytes.Checked = false;
-            this.rbRandomBytes.Location = new System.Drawing.Point(39, 100);
-            this.rbRandomBytes.Name = "rbRandomBytes";
-            this.rbRandomBytes.Size = new System.Drawing.Size(121, 23);
-            this.rbRandomBytes.TabIndex = 8;
-            this.rbRandomBytes.Text = "RandomBytes";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1092,7 +1009,6 @@
             this.AssemblyTab.ResumeLayout(false);
             this.MainTab.ResumeLayout(false);
             this.nsGroupBox7.ResumeLayout(false);
-            this.nsGroupBox2.ResumeLayout(false);
             this.nsGroupBox1.ResumeLayout(false);
             this.OptionsTab.ResumeLayout(false);
             this.nsGroupBox6.ResumeLayout(false);
@@ -1111,8 +1027,6 @@
         private NSTheme nsTheme1;
         private NSTabControl AssemblyTab;
         private System.Windows.Forms.TabPage MainTab;
-        private NSGroupBox nsGroupBox2;
-        private NSRandomPool nsRandomPool1;
         private NSGroupBox nsGroupBox1;
         private System.Windows.Forms.TabPage Assembly;
         private System.Windows.Forms.TabPage CryptTab;
@@ -1133,7 +1047,6 @@
         private NSLabel nsLabel5;
         private NSLabel nsLabel4;
         private NSLabel nsLabel3;
-        private NSTextBox txtEncryptionKey;
         private NSGroupBox nsGroupBox3;
         private NSLabel nsLabel1;
         private NSTextBox txtPump;
@@ -1153,7 +1066,6 @@
         private NSTextBox txtDelay;
         private NSOnOffBox cbPump;
         private NSOnOffBox cbStartup;
-        private NSOnOffBox cbDelay;
         private NSControlButton nsControlButton1;
         private NSGroupBox nsGroupBox7;
         private NSRadioButton rbRegAsm;
@@ -1165,19 +1077,14 @@
         private NSTextBox txtFName;
         private NSControlButton nsControlButton2;
         private System.Windows.Forms.TabPage Scanner;
-        private NSButton nsButton1;
+        private NSButton btnFScan;
         private NSTextBox txtScanFile;
-        private NSTextBox txtScanImage;
-        private NSLabel nsLabel17;
         private NSLabel nsLabel16;
         private NSTextBox txtScanLink;
-        private System.Windows.Forms.RichTextBox txtScanDetailes;
         private NSLabel nsLabel15;
         private NSLabel nsLabel14;
-        private NSTextBox nsTextBox2;
-        private NSLabel danklebel;
-        private NSTextBox txtScanBBCode;
-        private NSButton nsButton2;
+        private NSTextBox txtScanRate;
+        private NSButton btnScan;
         private NSGroupBox nsGroupBox6;
         private NSTextBox txtMsg;
         private NSTextBox txtMsgTitle;
@@ -1185,6 +1092,11 @@
         private NSLabel nsLabel18;
         private NSOnOffBox cbMsgBox;
         private NSCheckBox rbRandomBytes;
+        private NSLabel nsLabel20;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private NSButton btnScanFile;
     }
 }
 

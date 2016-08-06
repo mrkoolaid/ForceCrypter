@@ -1,6 +1,5 @@
 C:\Users\m1406_000\Documents\Visual Studio 2015\Projects\ForceCrypterSmall\ForceCrypterSmall\bin\Debug\ForceCrypterSmall.exe.config
 C:\Users\m1406_000\Documents\Visual Studio 2015\Projects\ForceCrypterSmall\ForceCrypterSmall\bin\Debug\ForceCrypterSmall.exe
-C:\Users\m1406_000\Documents\Visual Studio 2015\Projects\ForceCrypterSmall\ForceCrypterSmall\obj\Debug\ForceCrypterSmall.csprojResolveAssemblyReference.cache
 C:\Users\m1406_000\Documents\Visual Studio 2015\Projects\ForceCrypterSmall\ForceCrypterSmall\obj\Debug\ForceCrypterSmall.Form1.resources
 C:\Users\m1406_000\Documents\Visual Studio 2015\Projects\ForceCrypterSmall\ForceCrypterSmall\obj\Debug\ForceCrypterSmall.Properties.Resources.resources
 C:\Users\m1406_000\Documents\Visual Studio 2015\Projects\ForceCrypterSmall\ForceCrypterSmall\obj\Debug\ForceCrypterSmall.csproj.GenerateResource.Cache

