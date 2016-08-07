@@ -11,3 +11,4 @@ C:\Users\m1406_000\Documents\Visual Studio 2015\Projects\ForceCrypterSmall\No ju
 C:\Users\m1406_000\Documents\Visual Studio 2015\Projects\ForceCrypterSmall\No junk\obj\Debug\ForceCrypterSmall.Form1.resources
 C:\Users\m1406_000\Documents\Visual Studio 2015\Projects\ForceCrypterSmall\No junk\obj\Debug\ForceCrypterSmall.Properties.Resources.resources
 C:\Users\m1406_000\Documents\Visual Studio 2015\Projects\ForceCrypterSmall\No junk\obj\Debug\ForceCrypterSmall.csproj.GenerateResource.Cache
+C:\Users\m1406_000\Documents\Visual Studio 2015\Projects\ForceCrypterSmall\ForceCrypterSmall\obj\Debug\ForceCrypterSmall.csprojResolveAssemblyReference.cache

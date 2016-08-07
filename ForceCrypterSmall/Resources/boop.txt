@@ -30,7 +30,7 @@ namespace stupidcancercodeisruiningeverything
         static void Main()
         {
 			//Basic delay
-            Thread.Sleep([delay-replace] * 100);
+            Thread.Sleep([delay-replace] * 1000);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmOne());
